@@ -15,8 +15,8 @@ router.post('/', tokenValidation, nameValidation, ageValidation, talkValidation,
 rateValidation, createUser);
 router.get('/search', tokenValidation, searchUser);
 router.get('/:id', getTalkerById);
-router.put('/:id', nameValidation, ageValidation, talkValidation, dataValidation, 
-rateValidation, tokenValidation, editUser);
+router.put('/:id', tokenValidation, nameValidation, ageValidation, talkValidation, dataValidation, 
+rateValidation, editUser);
 router.delete('/:id', tokenValidation, deleteUser);
 
 module.exports = router;
