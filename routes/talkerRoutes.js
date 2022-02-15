@@ -11,8 +11,8 @@ const editUser = require('../controllers/editUser');
 const router = express.Router();
 
 router.get('/', getAllTalkers);
-router.post('/', nameValidation, ageValidation, talkValidation, dataValidation, 
-rateValidation, tokenValidation, createUser);
+router.post('/', tokenValidation, nameValidation, ageValidation, talkValidation, dataValidation, 
+rateValidation, createUser);
 router.get('/search', tokenValidation, searchUser);
 router.get('/:id', getTalkerById);
 router.put('/:id', nameValidation, ageValidation, talkValidation, dataValidation, 

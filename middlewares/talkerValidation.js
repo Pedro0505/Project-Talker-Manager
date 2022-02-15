@@ -1,3 +1,17 @@
+function tokenValidation(req, res, next) {
+  const { authorization } = req.headers;
+
+  if (!authorization) {
+    return res.status(401).json({ message: 'Token não encontrado' });
+  }
+
+  if (authorization.length !== 16) {
+    return res.status(401).json({ message: 'Token inválido' });
+  }
+
+  next();
+}
+
 function nameValidation(req, res, next) {
   const { name } = req.body;
 
@@ -52,20 +66,6 @@ function talkValidation(req, res, next) {
     return res.status(400).json({ 
       message: 'O campo "talk" é obrigatório e "watchedAt" e "rate" não podem ser vazios',
     });
-  }
-
-  next();
-}
-
-function tokenValidation(req, res, next) {
-  const { authorization } = req.headers;
-
-  if (!authorization) {
-    return res.status(401).json({ message: 'Token não encontrado' });
-  }
-
-  if (authorization.length !== 16) {
-    return res.status(401).json({ message: 'Token inválido' });
   }
 
   next();
