@@ -6,6 +6,7 @@ tokenValidation } = require('../middlewares/talkerValidation');
 const createUser = require('../controllers/createUser');
 const searchUser = require('../controllers/searchUser');
 const deleteUser = require('../controllers/deleteUser');
+const editUser = require('../controllers/editUser');
 
 const router = express.Router();
 
@@ -15,5 +16,7 @@ rateValidation, tokenValidation, createUser);
 router.get('/search', tokenValidation, searchUser);
 router.get('/:id', getTalkerById);
 router.delete('/:id', tokenValidation, deleteUser);
+router.put('/:id', nameValidation, ageValidation, talkValidation, dataValidation, 
+rateValidation, tokenValidation, editUser);
 
 module.exports = router;
