@@ -2,7 +2,7 @@ function emailValidation(req, res, next) {
   const { email } = req.body;
   const emailRgxExp = /[A-Za-z]*[@][A-Za-z]*[.]com/gi;
 
-  if (!email || email.length === 0) {
+  if (!email) {
     return res.status(400).json({ message: 'O campo "email" é obrigatório' });
   }
   if (!emailRgxExp.test(email)) {

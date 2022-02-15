@@ -1,7 +1,7 @@
 function nameValidation(req, res, next) {
   const { name } = req.body;
 
-  if (!name || name === '') {
+  if (!name) {
     return res.status(400).json({ message: 'O campo "name" é obrigatório' });
   }
 
@@ -14,7 +14,7 @@ function nameValidation(req, res, next) {
 function ageValidation(req, res, next) {
   const { age } = req.body;
 
-  if (!age || age === '') {
+  if (!age) {
     return res.status(400).json({ message: 'O campo "age" é obrigatório' });
   }
 

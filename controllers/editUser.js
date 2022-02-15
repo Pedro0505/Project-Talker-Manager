@@ -9,13 +9,12 @@ async function editUser(req, res) {
       const data = await fs.readFile(FILE_NAME);
       const response = JSON.parse(data);
     
-      const filterById = response.filter((e) => +e.id !== +id);
+      const talkerIndex = response.findIndex((e) => +e.id === +id);
       const newUser = { id: +id, name, age, talk };
-      filterById.push(newUser);
-      filterById.sort((a, b) => a.id - b.id);
+      response[talkerIndex] = newUser;
+      response.sort((a, b) => a.id - b.id);
   
-      await fs.writeFile(FILE_NAME, JSON.stringify(filterById));
-    
+      await fs.writeFile(FILE_NAME, JSON.stringify(response));
       return res.status(200).json(newUser);
     } catch (error) {
       console.log(error);

@@ -1,7 +1,7 @@
 function passwordValidation(req, res, next) {
   const { password } = req.body;
 
-  if (!password || password.length === 0) {
+  if (!password) {
     return res.status(400).json({ message: 'O campo "password" é obrigatório' });
   }
   if (password.length < 6) {
