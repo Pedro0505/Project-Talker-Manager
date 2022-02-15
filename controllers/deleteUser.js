@@ -10,7 +10,7 @@ async function deleteUser(req, res) {
   
     const found = response.filter((e) => +e.id !== +id);
     await fs.writeFile(FILE_NAME, JSON.stringify(found));
-    return res.status(204);
+    return res.status(204).end();
   } catch (error) {
     console.log(error);
   }
